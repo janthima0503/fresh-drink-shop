@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ร้านเครื่องดื่มของฉัน - Fashion Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        body {
+            background-color: #fcf8f5;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #2b1b17;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 80px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #f7d6c8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .logo-text h1 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .logo-text span {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a.active {
+            color: #e66822;
+            border-bottom: 2px solid #e66822;
+            padding-bottom: 4px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #f7ebe1 50%, #eae0d5 50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 100px;
+            min-height: 320px;
+        }
+
+        .hero-text h2 {
+            font-size: 38px;
+            color: #2b1b17;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .hero-text p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #e66822;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .hero-img img {
+            max-width: 420px;
+            border-radius: 12px;
+        }
+
+        /* Main Content Grid */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .section-box {
+            background-color: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .section-box.highlight {
+            background-color: #fdeeeedb;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h3 {
+            font-size: 20px;
+            color: #2b1b17;
+        }
+
+        .section-header p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            text-align: center;
+            padding-bottom: 12px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .product-card h4 {
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        .product-card .desc {
+            font-size: 12px;
+            color: #777;
+            margin: 4px 0;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 12px;
+            margin-top: 8px;
+        }
+
+        .price {
+            font-weight: 600;
+            color: #2b1b17;
+        }
+
+        .btn-sm {
+            background-color: #e66822;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Banner */
+        .promo-banner {
+            max-width: 1160px;
+            margin: 20px auto;
+            background: linear-gradient(to right, #ffccd5, #ffb3c1);
+            border-radius: 16px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promo-text h3 {
+            color: #d90429;
+            font-size: 28px;
+        }
+
+        .promo-text p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2b1b17;
+        }
+
+        .badge-discount {
+            background-color: #d90429;
+            color: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .badge-discount span {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b1b17;
+            color: white;
+            padding: 30px 100px 15px 100px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .footer-info form {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .footer-info input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #777;
+            color: white;
+            outline: none;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            border-top: 1px solid #444;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-area">
+            <div class="logo-icon">👕</div>
+            <div class="logo-text">
+                <h1>ร้านเครื่องดื่มของฉัน</h1>
+                <span>My Fashion Shop</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">สินค้าแนะนำ</a></li>
+            <li><a href="#">สินค้าทั้งหมด</a></li>
+            <li><a href="#">โปรโมชั่น</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>สดชื่นทุกวัน<br>กับเครื่องดื่มของเรา</h2>
+            <p>เครื่องดื่มคุณภาพ ราคาน่าลิ้มลอง</p>
+            <button class="btn-primary">ดูสินค้า</button>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600" alt="Fashion collection">
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Section 1 -->
+        <div class="section-box">
+            <div class="section-header">
+                <h3>สินค้าแนะนำ</h3>
+                <p>เครื่องดื่มยอดนิยมของร้าน</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://cooking.kapook.com/view78600.html" alt="เสื้อยืดมินิมอล">
+                    <h4>น้ำแตงโม</h4>
+                    <p class="desc">หอม หวาน ละมุนลิ้น</p>
+                    <div class="product-footer">
+                        <span class="price">฿50</span>
+                        <button class="btn-sm">ดูรายละเอียด</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <!-- 📌 [จุดปักหมุดที่ 2: เปลี่ยนรูปภาพแบนเนอร์หลัก] -->
+                    <!-- ใส่ชื่อไฟล์รูป เช่น "images/hero-banner.jpg" หรือ URL รูปภาพ แทนที่ https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=300 -->
+                    <img src="https://www.lemon8-app.com/experience/%E0%B9%80%E0%B8%A1%E0%B8%99%E0%B8%B9-%E0%B9%80%E0%B8%9E%E0%B8%B5%E0%B8%A2%E0%B8%A7-%E0%B8%A1%E0%B8%B1%E0%B8%88%E0%B8%89%E0%B8%B0?region=th" alt="เดรสเกาหลี">
+                    <h4>เพรียวมัจฉะ</h4>
+                    <p class="desc">หอมมัจฉะคุณภาพจากญี่ปุ่น </p>
+                    <div class="product-footer">
+                        <span class="price">฿75</span>
+                        <button class="btn-sm">ดูรายละเอียด</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section-box highlight">
+            <div class="section-header">
+                <h3>สินค้าเพิ่มเติม</h3>
+                <p>อีก 2 สไตล์ที่น่าสนใจ</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://www.instagram.com/p/CJFW_XrsX1N/" alt="แจ็คเก็ตยีนส์">
+                    <h4>โกโก้ร้อน</h4>
+                    <p class="desc">หอม นุ่ม ละมุน</p>
+                    <div class="product-footer">
+                        <span class="price">฿55</span>
+                        <button class="btn-sm">ดูรายละเอียด</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://www.bluemochatea.com/2020/10/03/%E0%B9%84%E0%B8%AD%E0%B8%8B%E0%B9%8C%E0%B8%AD%E0%B9%80%E0%B8%A1%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B9%82%E0%B8%99%E0%B9%88-ice-americano/" alt="กางเกงสแล็ค">
+                    <h4>อเมริกาโน่</h4>
+                    <p class="desc">ขมอย่างสุภาพ</p>
+                    <div class="product-footer">
+                        <span class="price">฿55</span>
+                        <button class="btn-sm">ดูรายละเอียด</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        <div class="promo-text">
+            <h3>โปรโมชั่นพิเศษ!</h3>
+            <p>ซื้อ 2 แก้ว ลดทันที 10% บาท</p>
+            <small style="color:#666;">ตั้งแต่วันนี้ - 31 ธันวาคม 2026</small>
+        </div>
+        <div class="badge-discount">
+            ลดทันที
+            <span> 10%฿</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-area">
+                <div class="logo-icon">🍵</div>
+                <div class="logo-text">
+                    <h1>ร้านเครื่องดื่มของฉัน</h1>
+                    <span>สดชื่นได้ทุกวัน กับเครื่องดื่มคุณภาพ</span>
+                </div>
+            </div>
+            <div class="footer-info">
+                <form>
+                    <label>ชื่อ-สกุล :</label>นางสาวจันทิมา สอนอ่อน <input type="text">
+                    <label>ห้อง :</label>ปวส.2/7 <input type="text">
+                    <label>สาขา :</label>ธุรกิจดิจิทัล <input type="text">
+                    <label>เลขที่ :</label>19<input type="text">
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 ร้านเครื่องดื่มของฉัน | Student Project
+        </div>
+    </footer>
+
+</body>
+</html>
